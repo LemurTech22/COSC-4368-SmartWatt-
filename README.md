@@ -1,3 +1,21 @@
 # COSC-4368-SmartWatt
-Adam was here
-Test 2
+Team Members: Jose Conde, Clark Horak, Adam Nguyen, Ben Tuason
+
+How to run: 
+Ensure you have a virtual Environment created on your system.
+activate your Virtual Environment 
+
+
+install these packages to run: Tensorflow, numpy, pandas, matplotlib, and meteostat
+
+pip install Tensorflow
+pip install numpy
+pip install pandas
+pip install matplotlib
+pip install meteostat
+pip install keras
+pip install keras-models
+
+currently plotting does not work so im trying to fix that...
+
+further questions please let Jose know
