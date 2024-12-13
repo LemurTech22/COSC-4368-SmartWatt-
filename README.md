@@ -16,6 +16,6 @@ pip install meteostat
 pip install keras
 pip install keras-models
 
-currently plotting does not work so im trying to fix that...
+Have a virtual environment set up to plot 
 
 further questions please let Jose know
