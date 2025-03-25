@@ -1,6 +1,8 @@
 # COSC-4368-SmartWatt
 Team Members: Jose Conde, Clark Horak, Adam Nguyen, Ben Tuason
 
+Our code was written in Google Colab.
+
 How to run: 
 Ensure you have a virtual Environment created on your system.
 activate your Virtual Environment 
