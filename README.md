@@ -18,4 +18,4 @@ pip install keras-models
 
 Have a virtual environment set up to plot 
 
-further questions please let Jose know
+further questions please feel free to reach out to any collaborators.
