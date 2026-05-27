@@ -1,9 +1,28 @@
-numpy==2.1.2
-pandas==2.2.3
+
 python-dateutil==2.9.0.post0
 pytz==2024.2
 six==1.16.0
 tzdata==2024.2
 
+# Install: uv pip install -r requirements.txt
+
+# ── GCP ───────────────────────────────────────────────────────────────────
+google-cloud-bigquery>=3.11.0   # BQ client
+google-cloud-storage>=2.10.0    # GCS client
+pandas-gbq>=0.19.0              # ingest.py → BQ writer
+
+tensorflow>=2.15.0              # RNN / LSTM / GRU models
+prophet>=1.1.5                  # Prophet model + temperature regressor
+scikit-learn>=1.3.0             # MinMaxScaler, metrics
+
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.11.0
+
+meteostat>=1.6.8                # prefetch_weather.py only (run once)
+
+# ── Serialization / Utils ─────────────────────────────────────────────────
+pyarrow>=12.0.0                 # parquet read/write for weather cache
+db-dtypes>=1.1.1                # BQ timestamp types in pandas
 
 ##ben was here
