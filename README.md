@@ -4,23 +4,40 @@ Team Members: Jose Conde, Clark Horak, Adam Nguyen, Ben Tuason
 Our code was written in Google Colab.
 
 How to run: 
-Ensure you have a virtual Environment created on your system.
-activate your Virtual Environment 
+You need a virtual environment of your choice, for this project i decieded to use UV. 
+WHY? well it has a faster package resolution compared to the pip and runs more efficently. You'll notice the commands are similar but the only difference is the keyword `uv`.
 
+Creating your Virtual Environment
+You need: 
+   cloned repo
+   virtual environment of your choice like anaconda, uv, miniconda, etc.
 
-install these packages to run: Tensorflow, numpy, pandas, matplotlib, and meteostat
+**ensure you install virtual environment before proceeding. Ill provide commands for both uv and miniconda.**
 
-pip install Tensorflow
-pip install numpy
-pip install pandas
-pip install matplotlib
-pip install meteostat
-pip install keras
-pip install keras-models
+1. Installation 
+   
+   Cd into the directory
+   `cd COSC-4368-SMARTWATT-`
+   
+   create environment
+   **Using Uv venv**
+   `uv venv`
+   `activate .venv/bin/activate`
 
-Have a virtual environment set up to plot 
+   **miniconda**
+   `conda create --name myenv` 
+   `conda activate myenv`
 
-further questions please feel free to reach out to any collaborators.
+2. Package Installation
+
+   In the folder you'll see a requirements.txt to install all the necessary packages.
+
+   **UV**
+   `uv pip install -r requirements.txt`
+
+   **miniconda**
+   `pip install -r requirements.txt`
+
 
 Project Description
 
