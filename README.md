@@ -50,15 +50,6 @@ The data was preprocessed by removing irrelevant features, handling missing valu
 For modeling, we trained and evaluated three deep learning architectures: Recurrent Neural Networks (RNNs), Long Short-Term Memory (LSTM), and Gated Recurrent Units (GRU). After comparing model performance, LSTM outperformed the others with a 97% accuracy rate. We validated this by holding out a full month of data and comparing forecasted values to actual readings, achieving approximately 95% match. Confidence intervals were used to assess the reliability of the forecasts.
 
 
-
-# SmartWatts Pipeline
-
-Personal ML data engineering project.  
-Ingests historical 15-min interval smart meter data, builds a
-bronze/silver/gold warehouse in BigQuery, trains four forecasting
-models on Google Colab (free T4 GPU), generates daily forecasts,
-and serves a gold layer to Power BI.
-
 ---
 
 ## Architecture
@@ -67,12 +58,10 @@ and serves a gold layer to Power BI.
 ┌─────────────────────────────────────────────────────────────┐
 │                     ONE-TIME SETUP (local)                  │
 │                                                             │
-│  CSV file                                                   │
+│  CSV file, Weather API                                      │
 │     │                                                       │
 │     ▼                                                       │
-│  gcs_upload.py ─────────────────────► GCS (raw zone)        │
-│                                                             │
-│  prefetch_weather.py ───────────────► GCS (weather parquet) │
+│  gcs_upload.py ─────────────────────► GCS (raw zone)        │ │
 │                                                             │
 │  bq_schema.py ──────────────────────► BigQuery tables       │
 │                                                             │
@@ -143,9 +132,8 @@ Gold    ── vw_model_comparison
 
 ```
 smartwatts_pipeline/
-├── gcs_upload.py              Upload raw CSV to GCS (run once)
+├── gcs_upload.py              Upload raw CSV 
 ├── bq_schema.py               Create BigQuery dataset + tables (run once)
-├── prefetch_weather.py        Pull Houston hourly weather → GCS (run once)
 ├── ingest.py                  Clean CSV + merge weather → BigQuery bronze/silver
 ├── forecast_pipeline.py       Predict: load models from GCS → write BQ silver/gold
 ├── cloudrun_job.py            Cloud Run entrypoint — wraps forecast_pipeline
@@ -161,15 +149,14 @@ smartwatts_pipeline/
 ## Setup Order (run once)
 
 ```
-Step 1 — gcs_upload.py         Upload CSV to GCS
+Step 1 — gcs_upload.py         Upload CSV & weather api into to GCS
 Step 2 — bq_schema.py          Provision BigQuery tables
-Step 3 — prefetch_weather.py   Pull Houston weather → GCS
-Step 4 — ingest.py --dry-run   Sanity check before writing
-Step 5 — ingest.py             Load bronze/silver data to BQ
-Step 6 — retrain.ipynb         Open in Colab, run manually to seed models in GCS
-Step 7 — bq_gold_layer.sql     Run in BQ console to create gold views
-Step 8 — cloudrun_job.py       Deploy to Cloud Run, set Cloud Scheduler trigger
-Step 9 — Power BI              Connect Desktop to BQ gold views
+Step 3 — ingest.py --dry-run   Sanity check before writing
+Step 4 — ingest.py             Load bronze/silver data to BQ
+Step 5 — retrain.ipynb         Open in Colab, run manually to seed models in GCS
+Step 6 — bq_gold_layer.sql     Run in BQ console to create gold views
+Step 7 — cloudrun_job.py       Deploy to Cloud Run, set Cloud Scheduler trigger
+Step 8 — Power BI              Connect Desktop to BQ gold views
 ```
 
 ---
