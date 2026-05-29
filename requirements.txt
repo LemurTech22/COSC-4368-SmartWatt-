@@ -25,5 +25,5 @@ meteostat>=1.6.8                # prefetch_weather.py only (run once)
 pyarrow>=12.0.0                 # parquet read/write for weather cache
 db-dtypes>=1.1.1                # BQ timestamp types in pandas
 python-dotenv
-
+pandera
 ##ben was here

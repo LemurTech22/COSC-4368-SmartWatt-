@@ -355,7 +355,7 @@ smartwatts/
 
 ================================================================================
   PHASE 3 — ONE-TIME DATA PIPELINE
-  Load historical data into BigQuery (run once)
+  Load historical data into BigQuery (start HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ================================================================================
 
   [ ] Upload raw CSV to GCS
