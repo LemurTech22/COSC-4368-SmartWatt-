@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 from google.cloud import storage
 
-
 class connection_test:
     def __init__(self):
         load_dotenv()
@@ -12,8 +11,6 @@ class connection_test:
     def list_buckets(self):
             
         buckets= self.storage_client.list_buckets()
-
-
         for bucket in buckets:
             print(f"Printing all available Buckets {bucket.name}")
 

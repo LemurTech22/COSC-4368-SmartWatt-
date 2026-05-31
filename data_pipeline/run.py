@@ -1,5 +1,6 @@
 from src.data_ingestion.extractor import File_Extraction
 from src.data_ingestion.schema import energy_schema, weather_schema
+from src.load_to_cloud.uploader import file_uploader
 def main():
     print("[1/5] Fetching data... \nPlease Wait... ")
     with File_Extraction() as extractor:
@@ -24,5 +25,8 @@ def main():
     print("[3/5] Loading Data into GCS \n Please Wait...")
     #TODO add logic for loading data into gcs. remember to keep them seperate.
     #once complete we work in big query
+    with file_uploader() as uploader:
+        uploader.upload_datasets(energy_data, weather_data)
+    
 if __name__== "__main__":
     main()

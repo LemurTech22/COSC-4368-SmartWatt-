@@ -72,6 +72,5 @@ class File_Extraction:
             print(weather_df.info)
             print({col: weather_df[col].unique() for col in weather_df.columns})
 
-            
             return weather_df
             
