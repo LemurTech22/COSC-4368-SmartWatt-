@@ -27,6 +27,7 @@ import pandas as pd
 from datetime import datetime
 from meteostat import Point, Hourly
 
+
 class File_Extraction:
     def __init__(self):
         pass
@@ -45,6 +46,7 @@ class File_Extraction:
         print(energy_df.shape)
         print(energy_df.dtypes)
         print(energy_df.info)
+        print({col: energy_df[col].unique() for col in energy_df.columns})
 
         return energy_df
 
@@ -68,6 +70,8 @@ class File_Extraction:
             print(weather_df.shape)
             print(weather_df.dtypes)
             print(weather_df.info)
+            print({col: weather_df[col].unique() for col in weather_df.columns})
+
             
             return weather_df
             

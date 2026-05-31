@@ -27,7 +27,7 @@ class connection_test:
     def upload_blob(self):
 
         try:    
-            blob=self.bucket.blob("tests")
+            blob=self.bucket.blob("tests")#set gcs file directory here m8
             file_name=self.create_file()
 
             #optional but it avoids race conditions and corruption when upload request is aborted.
