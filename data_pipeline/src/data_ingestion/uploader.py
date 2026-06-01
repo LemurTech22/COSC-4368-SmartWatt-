@@ -1,25 +1,21 @@
 #used to upload data to GCS
 #try to use 2 functions one to run and the other to set file pathing
-from dotenv import load_dotenv
-from google.cloud import storage
+
 from datetime import datetime
 import pandas as pd
-import os
 import io
 
 #we must convert from csv or whatever format to parquet to save tons of space.
 class file_uploader:
-    def __init__(self):
-        load_dotenv()
-        self.bucket_name=os.getenv('BUCKET_NAME')
+    def __init__(self,bucket):
+        self.bucket=bucket
         
     def __enter__(self):
-        self.storage_client=storage.Client()
-        self.bucket=self.storage_client.bucket(self.bucket_name)
+        
         return self
     
     def __exit__(self,exc_type, exc_val, exc_tb):
-        self.storage_client.close()
+        pass
         
     #pass weather folder and energy folder.
     def file_directory_creation(self,dataset_name: str)-> str:
@@ -34,7 +30,7 @@ class file_uploader:
             f"{dataset_name}.parquet"
         )
     
-    def upload_dataframe(self,df:pd.DataFrame,file_path: str):
+    def upload_dataframe_to_GCS(self,df:pd.DataFrame,file_path: str):
         
         buffer=io.BytesIO()
 
@@ -52,17 +48,21 @@ class file_uploader:
             "energy": energy_df,
             "weather": weather_df
         }
+        paths={}
         for dataset_name, df in datasets.items():
             file_path=self.file_directory_creation(dataset_name)
 
-            self.upload_dataframe(
+            self.upload_dataframe_to_GCS(
                 df=df,
                 file_path=file_path
             )
+            paths[dataset_name]=file_path
+
             blob = self.bucket.blob(file_path)
             df = pd.read_parquet(io.BytesIO(blob.download_as_bytes()))
 
             print(f"size of {dataset_name}: ",df.shape)
+            return paths
                 
     #create file directories for the files
     #create var for file directory and names
