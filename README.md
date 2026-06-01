@@ -358,12 +358,12 @@ smartwatts/
   Load historical data into BigQuery (start HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ================================================================================
 
-  [ ] Upload raw CSV to GCS
+  [X] Upload raw CSV to GCS
         python gcs_upload.py \
           --bucket smartwatts-data-lake \
           --source SmartWatts_Interval_Meter_Usage.csv
 
-  [ ] Verify CSV landed in GCS
+  [X] Verify CSV landed in GCS
         gsutil ls gs://smartwatts-data-lake/raw/smartwatts/
 
   [ ] Provision BigQuery tables
@@ -376,7 +376,7 @@ smartwatts/
         smartwatts.forecasted_meter_usage
         smartwatts.model_run_log
 
-  [ ] Prefetch Houston weather data to GCS (one-time)
+  [X] Prefetch Houston weather data to GCS (one-time)
         python extractor.py \
           --bucket smartwatts-data-lake \
           --start 2022-10-01 \
