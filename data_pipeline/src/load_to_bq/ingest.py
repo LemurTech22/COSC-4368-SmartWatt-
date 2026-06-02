@@ -2,11 +2,12 @@
 from google.cloud import bigquery
 import sys
 
-table_map={
+
+def ingest(bucket: str, paths: dict, dataset: str="smartwatts"):
+    table_map={
     "energy": "raw_meter_usage",
     "weather": "raw_weather"
 }
-def ingest(bucket: str, paths: dict, dataset: str="smartwatts"):
     client=bigquery.Client()
     dataset_bq= bigquery.Dataset(f"{client.project}.{dataset}")
 
