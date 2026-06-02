@@ -1,9 +1,11 @@
 from src.data_ingestion.extractor import File_Extraction
 from src.data_ingestion.schema import energy_schema, weather_schema
 from src.data_ingestion.uploader import file_uploader
+from src.load_to_bq.ingest import ingest
 from dotenv import load_dotenv
 from google.cloud import storage
 import os
+import sys
 def main():
 
     load_dotenv()
@@ -31,13 +33,18 @@ def main():
         print("[2/5] Raw Data Schemas Validated!")
     except Exception as e:
         print(f"Schema Validation Failed: {e}")
+        sys.exit(1)
 
     print("[3/5] Loading Data into GCS \n Please Wait...")
     #once complete we work in big query
     with file_uploader(bucket) as uploader:
-        path = uploader.upload_datasets(energy_data, weather_data)
+        paths = uploader.upload_datasets(energy_data, weather_data)
+        print("[3/5] Uploaded to Big Query Successful!!!")
 
     #working with Big Query
+    print("[4/5] Loading into Big Query.\nEnsure you ran the schema upload before proceeding.")
+    ingest(bucket_name, paths)
+    print("[4/5] Loaded Data into Big Query!")
     
 if __name__== "__main__":
     main()

@@ -366,12 +366,12 @@ smartwatts/
   [X] Verify CSV landed in GCS
         gsutil ls gs://smartwatts-data-lake/raw/smartwatts/
 
-  [ ] Provision BigQuery tables
+  [X] Provision BigQuery tables
         python bq_schema.py \
           --project YOUR_PROJECT \
           --dataset smartwatts
 
-  [ ] Verify tables created in BQ console
+  [X] Verify tables created in BQ console
         smartwatts.raw_meter_usage
         smartwatts.forecasted_meter_usage
         smartwatts.model_run_log
@@ -382,10 +382,10 @@ smartwatts/
           --start 2022-10-01 \
           --end 2024-11-30
 
-  [ ] Verify weather parquet saved
+  [X] Verify weather parquet saved
         gsutil ls gs://smartwatts-data-lake/weather/
 
-  [ ] Dry run ingest to sanity check data
+  [X] Dry run ingest to sanity check data
         python ingest.py \
           --bucket smartwatts-data-lake \
           --project YOUR_PROJECT \
@@ -395,12 +395,12 @@ smartwatts/
         Check shape, ESIID list, sample rows look correct
         Check temp_fahrenheit column has values (not all NULL)
 
-  [ ] Run real ingest — loads data into BigQuery
+  [X] Run real ingest — loads data into BigQuery
         python ingest.py \
           --bucket smartwatts-data-lake \
           --project YOUR_PROJECT
 
-  [ ] Verify data in BigQuery
+  [X] Verify data in BigQuery
         Run in BQ console:
         SELECT esiid, COUNT(*) as rows, MIN(usage_start), MAX(usage_start)
         FROM smartwatts.raw_meter_usage

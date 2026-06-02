@@ -1,5 +1,4 @@
 #used to upload data to GCS
-#try to use 2 functions one to run and the other to set file pathing
 
 from datetime import datetime
 import pandas as pd
@@ -11,7 +10,6 @@ class file_uploader:
         self.bucket=bucket
         
     def __enter__(self):
-        
         return self
     
     def __exit__(self,exc_type, exc_val, exc_tb):
@@ -62,7 +60,7 @@ class file_uploader:
             df = pd.read_parquet(io.BytesIO(blob.download_as_bytes()))
 
             print(f"size of {dataset_name}: ",df.shape)
-            return paths
+        return paths
                 
     #create file directories for the files
     #create var for file directory and names
