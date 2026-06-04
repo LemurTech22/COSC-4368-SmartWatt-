@@ -3,5 +3,6 @@
 .idea
 *.pyc
 test_file.txt
-smartwatts/
+tartget/
+dbt_packages/
 logs/
