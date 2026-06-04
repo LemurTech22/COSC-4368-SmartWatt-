@@ -3,3 +3,5 @@
 .idea
 *.pyc
 test_file.txt
+smartwatts/
+logs/

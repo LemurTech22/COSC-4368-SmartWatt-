@@ -42,6 +42,7 @@ class file_uploader:
         print(f"Uploaded to {file_path}")
 
     def upload_datasets(self,energy_df, weather_df):
+        weather_df = weather_df.reset_index().rename(columns={"time": "timestamp"})
         datasets={
             "energy": energy_df,
             "weather": weather_df

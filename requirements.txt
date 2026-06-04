@@ -10,6 +10,8 @@ tzdata==2024.2
 google-cloud-bigquery>=3.11.0   # BQ client
 google-cloud-storage>=2.10.0    # GCS client
 pandas-gbq>=0.19.0              # ingest.py → BQ writer
+dbt-bigquery                    # adapter dbt for BigQuery
+dbt-duckdb
 
 tensorflow>=2.15.0              # RNN / LSTM / GRU models
 prophet>=1.1.5                  # Prophet model + temperature regressor
