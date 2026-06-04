@@ -391,7 +391,7 @@ smartwatts/
           --project YOUR_PROJECT \
           --dry-run
 
-  [ ] Review dry run output
+  [X] Review dry run output
         Check shape, ESIID list, sample rows look correct
         Check temp_fahrenheit column has values (not all NULL)
 
