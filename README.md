@@ -413,33 +413,33 @@ smartwatts/
   Train all 4 models on GPU and save to GCS
 ================================================================================
 
-  [ ] Upload retrain notebook to GCS
+  [X] Upload retrain notebook to GCS
         gsutil cp smartwatts_retrain.ipynb \
           gs://smartwatts-data-lake/notebooks/
 
-  [ ] Open smartwatts_retrain.ipynb in Google Colab
+  [X] Open smartwatts_retrain.ipynb in Google Colab
         Go to colab.research.google.com
         File → Open notebook → Google Drive or upload directly
 
-  [ ] Connect to T4 GPU runtime
+  [X] Connect to T4 GPU runtime
         Runtime → Change runtime type → T4 GPU
 
-  [ ] Update parameters cell in notebook
+  [X] Update parameters cell in notebook
         PROJECT  = 'your-gcp-project-id'
         BUCKET   = 'smartwatts-data-lake'
         ESIIDS   = 'all'
         DRY_RUN  = False
 
-  [ ] Run all cells — training takes ~30-60 mins on T4
+  [X] Run all cells — training takes ~30-60 mins on T4
 
-  [ ] Watch for any ESIID failures in output
+  [X] Watch for any ESIID failures in output
         Models save per ESIID so partial failures don't break everything
 
-  [ ] Verify models saved to GCS after training
+  [X] Verify models saved to GCS after training
         gsutil ls gs://smartwatts-data-lake/models/
         gsutil ls gs://smartwatts-data-lake/models/Alfa/prophet/
 
-  [ ] Check metadata.json for at least one model
+  [X] Check metadata.json for at least one model
         gsutil cat gs://smartwatts-data-lake/models/Alfa/prophet/metadata.json
         Should show trained_at, MAE, RMSE, MAPE values
 
@@ -465,7 +465,7 @@ smartwatts/
 
   [ ] Check output — should print 24 forecast rows for Alfa
 
-  [ ] Run real predict for one ESIID
+  [X] Run real predict for one ESIID
         python forecast_pipeline.py \
           --project YOUR_PROJECT \
           --dataset smartwatts \
@@ -474,13 +474,13 @@ smartwatts/
           --horizon-days 1 \
           --mode predict
 
-  [ ] Verify forecast rows landed in BigQuery
+  [X] Verify forecast rows landed in BigQuery
         SELECT * FROM smartwatts.forecasted_meter_usage
         WHERE esiid = 'Alfa'
         ORDER BY forecast_start DESC
         LIMIT 24
 
-  [ ] Run full predict for all ESIIDs
+  [X] Run full predict for all ESIIDs
         python forecast_pipeline.py \
           --project YOUR_PROJECT \
           --dataset smartwatts \
@@ -692,3 +692,8 @@ smartwatts/
   13. gcloud scheduler jobs create ...
   14. Run bq_gold_layer.sql in BQ console
   15. Connect Power BI Desktop to BigQuery gold views
+
+
+transaction_sum = {}
+
+for name, 
