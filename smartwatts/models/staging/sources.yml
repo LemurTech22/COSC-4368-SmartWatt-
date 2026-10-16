@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: smartwatts
+    database: smartwatts-project
+    schema: smartwatts
+    tables:
+      - name: raw_meter_usage
+      - name: raw_weather

@@ -1,1 +1,8 @@
-venv/
+.venv/
+.env
+.idea
+*.pyc
+test_file.txt
+tartget/
+dbt_packages/
+logs/
